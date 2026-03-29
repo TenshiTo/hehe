@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philippine Visual Arts — A Journey Through Tradition and Modernity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #1a1410;
+    --bg-card: #231c15;
+    --bg-card2: #2a2018;
+    --gold: #c9a96e;
+    --gold-light: #e8c98a;
+    --gold-dim: #a07840;
+    --text-primary: #f0e8d8;
+    --text-secondary: #b8a888;
+    --text-muted: #7a6a50;
+    --border: rgba(201,169,110,0.2);
+    --accent-line: #c9a96e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(18,13,9,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1rem, 5vw, 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--gold);
+    transition: all 0.3s;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px clamp(1.5rem, 8vw, 8rem) 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,169,110,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(160,120,64,0.05) 0%, transparent 60%),
+      linear-gradient(180deg, #0e0a06 0%, #1a1410 40%, #1e170f 100%);
+  }
+
+  .hero-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 6px 20px;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeSlideDown 1s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    font-weight: 600;
+    line-height: 0.95;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+    animation: fadeSlideUp 1s ease 0.2s both;
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+    position: relative;
+    z-index: 1;
+    animation: expand 1s ease 0.4s both;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-style: italic;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+    animation: fadeSlideUp 1s ease 0.5s both;
+  }
+
+  .hero-desc {
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    position: relative;
+    z-index: 1;
+    animation: fadeSlideUp 1s ease 0.6s both;
+  }
+
+  .hero-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1s ease 0.8s both;
+  }
+
+  .scroll-hint {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 2s ease 1.2s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--gold-dim), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* CONTENTS */
+  .toc {
+    padding: 80px clamp(1.5rem, 8vw, 8rem);
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .toc h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .toc-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 3rem;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .toc-item {
+    background: var(--bg-dark);
+    padding: 1.8rem 2rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    transition: background 0.3s;
+    text-decoration: none;
+    color: inherit;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .toc-item:hover {
+    background: var(--bg-card2);
+    border-left-color: var(--gold);
+  }
+
+  .toc-num {
+    width: 40px;
+    height: 40px;
+    background: var(--gold-dim);
+    color: var(--bg-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .toc-text strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .toc-text span {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  /* SECTION WRAPPER */
+  .section {
+    padding: 100px clamp(1.5rem, 8vw, 8rem);
+    position: relative;
+  }
+
+  .section:nth-child(even) { background: var(--bg-card); }
+
+  .section-header {
+    margin-bottom: 60px;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold-dim);
+  }
+
+  .section-num {
+    display: inline-flex;
+    width: 56px; height: 56px;
+    background: var(--gold-dim);
+    color: var(--bg-dark);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    float: left;
+    margin-right: 1.2rem;
+    margin-top: 4px;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    clear: both;
+  }
+
+  .section-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1.2rem 0 1rem;
+  }
+
+  .section-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+
+  /* SUBSECTION TITLE */
+  .subsection-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+
+  .subsection-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 50px; height: 1px;
+    background: var(--gold);
+  }
+
+  .subsection-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  /* CARDS */
+  .card-stack { display: flex; flex-direction: column; gap: 1px; }
+
+  .card {
+    background: var(--bg-dark);
+    border-left: 3px solid var(--gold-dim);
+    padding: 1.8rem 2rem;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .section:nth-child(even) .card { background: var(--bg-card2); }
+
+  .card:hover {
+    border-left-color: var(--gold);
+    background: rgba(201,169,110,0.04);
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-icon {
+    width: 34px; height: 34px;
+    background: var(--bg-card2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.8rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 3px 12px;
+    background: rgba(201,169,110,0.08);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    margin-top: 2rem;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .stat {
+    flex: 1;
+    min-width: 120px;
+    background: var(--bg-dark);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .section:nth-child(even) .stat { background: var(--bg-card2); }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* PULLQUOTE */
+  .pullquote {
+    background: rgba(201,169,110,0.06);
+    border: 1px solid var(--border);
+    padding: 1.8rem 2rem;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--gold-dim);
+    position: absolute;
+    top: -10px; left: 16px;
+    line-height: 1;
+  }
+
+  .pullquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-left: 1rem;
+  }
+
+  /* TWO COLUMN LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* ARTIST CARD */
+  .artist-list { display: flex; flex-direction: column; gap: 1px; }
+
+  .artist-card {
+    background: var(--bg-dark);
+    padding: 1.6rem 2rem;
+    border-left: 3px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .section:nth-child(even) .artist-card { background: var(--bg-card2); }
+
+  .artist-card:hover {
+    border-left-color: var(--gold);
+    background: rgba(201,169,110,0.04);
+  }
+
+  .artist-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .artist-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.6rem;
+    line-height: 1.65;
+  }
+
+  .genre-badge {
+    font-size: 0.7rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .genre-badge::before { content: 'Genre: '; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 1rem; }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .checklist li::before {
+    content: '✓';
+    color: var(--gold);
+    font-size: 0.8rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  /* INFO BOX */
+  .info-box {
+    background: var(--bg-card2);
+    border: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 0;
+    border-radius: 2px;
+  }
+
+  .info-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--gold-light);
+  }
+
+  /* PERIOD CARD */
+  .period-card {
+    background: var(--bg-dark);
+    padding: 2rem;
+    border-left: 3px solid var(--gold-dim);
+    margin-bottom: 1px;
+  }
+
+  .section:nth-child(even) .period-card { background: var(--bg-card2); }
+
+  .period-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+  }
+
+  .period-icon {
+    width: 34px; height: 34px;
+    background: var(--bg-card2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .period-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .period-sub {
+    font-size: 0.78rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .bullet-list {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .bullet-list li {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .bullet-list li::before {
+    content: '•';
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+  }
+
+  .bullet-list li strong { color: var(--text-primary); }
+
+  /* GRID 2 */
+  .card-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  .grid-card {
+    background: var(--bg-dark);
+    padding: 2rem;
+    transition: background 0.3s;
+  }
+
+  .section:nth-child(even) .grid-card { background: var(--bg-card2); }
+
+  .grid-card:hover { background: rgba(201,169,110,0.05); }
+
+  .grid-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--gold-light);
+  }
+
+  .grid-card p {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* CLOSING */
+  .closing {
+    padding: 120px clamp(1.5rem, 8vw, 8rem);
+    text-align: center;
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,169,110,0.06), transparent);
+  }
+
+  .closing-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .closing-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing p {
+    max-width: 680px;
+    margin: 0 auto 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    display: block;
+  }
+
+  .closing-stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0e0a06;
+    border-top: 1px solid var(--border);
+    padding: 2rem clamp(1.5rem, 8vw, 8rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+  }
+
+  .footer-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* SPACER */
+  .gap { margin-top: 3rem; }
+  .gap-sm { margin-top: 1.5rem; }
+
+  /* ANIMATIONS */
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes expand {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE NAV */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0; bottom: 0;
+    background: rgba(14,10,6,0.98);
+    z-index: 999;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+  }
+
+  .mobile-nav.open { display: flex; }
+
+  .mobile-nav a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.3s;
+  }
+
+  .mobile-nav a:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .two-col { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 600px) {
+    .section { padding: 70px 1.5rem; }
+    .toc { padding: 60px 1.5rem; }
+    .hero { padding: 100px 1.5rem 60px; }
+    .closing { padding: 80px 1.5rem; }
+    footer { flex-direction: column; text-align: center; }
+    .closing-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🎨 Pilipinas</div>
+  <ul class="nav-links">
+    <li><a href="#roots">Roots</a></li>
+    <li><a href="#traditional">Traditional</a></li>
+    <li><a href="#regional">Regional</a></li>
+    <li><a href="#evolution">Evolution</a></li>
+    <li><a href="#masters">Masters</a></li>
+    <li><a href="#contemporary">Contemporary</a></li>
+    <li><a href="#social">Social Voice</a></li>
+    <li><a href="#preserving">Preserving</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#roots" onclick="toggleNav()">01 — Roots of Filipino Artistry</a>
+  <a href="#traditional" onclick="toggleNav()">02 — Traditional Visual Arts</a>
+  <a href="#regional" onclick="toggleNav()">03 — Regional Art Forms</a>
+  <a href="#evolution" onclick="toggleNav()">04 — Evolution to Contemporary</a>
+  <a href="#masters" onclick="toggleNav()">05 — Filipino Masters</a>
+  <a href="#contemporary" onclick="toggleNav()">06 — Contemporary Global Stage</a>
+  <a href="#social" onclick="toggleNav()">07 — Art as Social Voice</a>
+  <a href="#preserving" onclick="toggleNav()">08 — Preserving Philippine Arts</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament">Arts Appreciation</div>
+  <h1>Philippine<br>Visual Arts</h1>
+  <div class="hero-divider"></div>
+  <div class="hero-subtitle">A Journey Through Tradition and Modernity</div>
+  <p class="hero-desc">Exploring the Rich Artistic Heritage and Contemporary Expressions of the Filipino People</p>
+  <div class="hero-badge">🎨 PILIPINAS</div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section class="toc">
+  <h2>Contents</h2>
+  <div class="toc-rule"></div>
+  <div class="toc-grid">
+    <a href="#roots" class="toc-item">
+      <div class="toc-num">01</div>
+      <div class="toc-text"><strong>The Roots of Filipino Artistry</strong><span>Ancient beginnings and colonial influences</span></div>
+    </a>
+    <a href="#traditional" class="toc-item">
+      <div class="toc-num">02</div>
+      <div class="toc-text"><strong>Traditional Visual Arts</strong><span>Weaving, carving, pottery, and tattoo traditions</span></div>
+    </a>
+    <a href="#regional" class="toc-item">
+      <div class="toc-num">03</div>
+      <div class="toc-text"><strong>Regional Art Forms</strong><span>Arts of Luzon, Visayas, and Mindanao</span></div>
+    </a>
+    <a href="#evolution" class="toc-item">
+      <div class="toc-num">04</div>
+      <div class="toc-text"><strong>Evolution to Contemporary</strong><span>Modernism, abstraction, and social realism</span></div>
+    </a>
+    <a href="#masters" class="toc-item">
+      <div class="toc-num">05</div>
+      <div class="toc-text"><strong>Filipino Masters</strong><span>National Artists and contemporary masters</span></div>
+    </a>
+    <a href="#contemporary" class="toc-item">
+      <div class="toc-num">06</div>
+      <div class="toc-text"><strong>Contemporary Art Global Stage</strong><span>Emerging artists and digital frontiers</span></div>
+    </a>
+    <a href="#social" class="toc-item">
+      <div class="toc-num">07</div>
+      <div class="toc-text"><strong>Art as Social Voice</strong><span>Creativity for change and cultural resistance</span></div>
+    </a>
+    <a href="#preserving" class="toc-item">
+      <div class="toc-num">08</div>
+      <div class="toc-text"><strong>Preserving Philippine Arts</strong><span>Living traditions and cultural celebrations</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- 01 ROOTS -->
+<section class="section" id="roots">
+  <div class="section-header reveal">
+    <div class="section-label">Chapter One</div>
+    <span class="section-num">01</span>
+    <h2>The Roots of<br>Filipino Artistry</h2>
+    <div class="section-rule"></div>
+    <p class="section-subtitle">Understanding the Foundations of Philippine Visual Culture</p>
+  </div>
+
+  <div class="reveal">
+    <div class="subsection-label">Pre-Colonial Period</div>
+    <h3 class="subsection-title">Ancient Beginnings: Pre-Colonial Art Traditions</h3>
+  </div>
+
+  <div class="gap-sm"></div>
+
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🏛</div><h3>Manunggul Jar (890–710 BCE)</h3></div>
+      <p>A secondary burial jar discovered in Tabon Caves, Palawan, featuring intricate carvings of a boat with two human figures representing souls journeying to the afterlife. This National Cultural Treasure exemplifies early Filipino spiritual beliefs and maritime culture.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🏺</div><h3>Pottery Traditions (2250 BCE)</h3></div>
+      <p>The earliest earthenware artifacts from Cagayan Valley demonstrate sophisticated paddle-and-anvil techniques. Red-slipped pots served utilitarian purposes while anthropomorphic burial jars reflected ancestor veneration practices across archipelagic communities.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🗿</div><h3>Petroglyphs and Rock Art</h3></div>
+      <p>Ancient engravings in Angono, Rizal and other sites reveal geometric patterns, human figures, and animistic symbols. These rock art traditions connected communities to their natural environment and spiritual cosmos, establishing foundations for later artistic expression.</p>
+    </div>
+  </div>
+
+  <div class="stats-row reveal gap">
+    <div class="stat"><span class="stat-num">4,000+</span><div class="stat-label">Years of History</div></div>
+    <div class="stat"><span class="stat-num">175+</span><div class="stat-label">Ethnic Groups</div></div>
+  </div>
+
+  <div class="pullquote reveal gap">
+    <p>These ancient forms established the spiritual and functional foundations of Filipino art, connecting communities to their ancestors and natural environment.</p>
+  </div>
+
+  <div class="gap reveal">
+    <div class="subsection-label">Colonial Period</div>
+    <h3 class="subsection-title">Colonial Influences and Artistic Transformation</h3>
+  </div>
+
+  <div class="gap-sm"></div>
+
+  <div class="period-card reveal">
+    <div class="period-head">
+      <div class="period-icon">🏰</div>
+      <div>
+        <h3>Spanish Period (1521–1898)</h3>
+        <div class="period-sub">333 Years of Colonial Rule</div>
+      </div>
+    </div>
+    <ul class="bullet-list">
+      <li><strong>Religious Iconography:</strong> Introduction of Catholic imagery, santos (saint statues), and retablos (altarpieces) transformed indigenous anito worship into Christian devotional art</li>
+      <li><strong>Baroque Architecture:</strong> Churches became canvases for frescoes, intricate wood carvings, and ecclesiastical art, with Paete emerging as a carving center</li>
+      <li><strong>Academic Training:</strong> Establishment of art schools like Academia de Pintura, Escultura y Grabado de Manila (1821) introduced European techniques</li>
+      <li><strong>Secular Art:</strong> By late 19th century, portraits and classical sculptures emerged, reflecting growing Filipino nationalism</li>
+    </ul>
+  </div>
+
+  <div class="period-card reveal">
+    <div class="period-head">
+      <div class="period-icon">🇺🇸</div>
+      <div>
+        <h3>American Period (1898–1946)</h3>
+        <div class="period-sub">48 Years of Influence</div>
+      </div>
+    </div>
+    <ul class="bullet-list">
+      <li><strong>Modern Art Education:</strong> UP School of Fine Arts (1916) and scholarships abroad exposed artists to Impressionism, Cubism, and Abstract Expressionism</li>
+      <li><strong>Rise of Modernism:</strong> Victorio Edades introduced modernist ideas (1928), challenging academic realism and inspiring the Thirteen Moderns</li>
+      <li><strong>Social Realism:</strong> Art began addressing social issues, poverty, and the human condition, laying groundwork for protest art</li>
+      <li><strong>New Media:</strong> Introduction of photography, printmaking, and eventually film expanded artistic expression beyond traditional forms</li>
+    </ul>
+  </div>
+
+  <div class="card-grid-2 reveal gap">
+    <div class="grid-card">
+      <h4>Cultural Fusion</h4>
+      <p>Indigenous artisans adapted foreign techniques while maintaining local sensibilities, creating a distinct Filipino-Spanish aesthetic visible in religious art and folk traditions.</p>
+    </div>
+    <div class="grid-card">
+      <h4>Lasting Impact</h4>
+      <p>The fusion of indigenous traditions with foreign influences created a unique Filipino artistic identity that persists today—rooted in heritage yet globally engaged.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 TRADITIONAL -->
+<section class="section" id="traditional">
+  <div class="section-header reveal">
+    <div class="section-label">Chapter Two</div>
+    <span class="section-num">02</span>
+    <h2>Traditional<br>Visual Arts</h2>
+    <div class="section-rule"></div>
+    <p class="section-subtitle">Living Heritage: Art Forms Passed Through Generations</p>
+  </div>
+
+  <!-- WEAVING -->
+  <div class="reveal">
+    <div class="subsection-label">Textile Heritage</div>
+    <h3 class="subsection-title">Sacred Weaving Traditions</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🌙</div><h3>T'nalak Weaving (T'boli)</h3></div>
+      <p>Known as "dreamweaving," T'boli women receive intricate patterns through dreams from Fu Dalu, the spirit of the abacá hemp. These sacred textiles use natural dyes from roots and bark, requiring 3–6 months to complete.</p>
+      <div class="tags"><span class="tag">South Cotabato</span><span class="tag">National Living Treasure</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⊞</div><h3>Inabel Weaving (Ilocos)</h3></div>
+      <p>Traditional cotton textiles featuring binakol (whirlpool) patterns and binatbatan designs created on wooden looms. These durable fabrics serve as blankets, table runners, and clothing, representing Ilocano resilience.</p>
+      <div class="tags"><span class="tag">Ilocos Region</span><span class="tag">Cotton &amp; Natural Dyes</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🍍</div><h3>Piña Cloth (Aklan)</h3></div>
+      <p>Luxurious fabric woven from pineapple leaf fibers, prized for its delicate sheen and cooling properties. Barong Tagalog and formal Filipiniana dresses showcase this labor-intensive craft requiring 4–6 months per piece.</p>
+      <div class="tags"><span class="tag">Aklan, Panay</span><span class="tag">Pineapple Fiber</span></div>
+    </div>
+  </div>
+  <div class="stats-row reveal gap">
+    <div class="stat"><span class="stat-num">50+</span><div class="stat-label">Weaving Traditions</div></div>
+    <div class="stat"><span class="stat-num">3–6</span><div class="stat-label">Months per Piece</div></div>
+    <div class="stat"><span class="stat-num">100%</span><div class="stat-label">Handcrafted</div></div>
+  </div>
+  <div class="pullquote reveal gap">
+    <p>Textiles serve as cultural repositories, with patterns carrying spiritual meanings, community histories, and ancestral wisdom passed through generations of weavers.</p>
+  </div>
+
+  <!-- CARVING -->
+  <div class="gap reveal">
+    <div class="subsection-label">Wood &amp; Craft</div>
+    <h3 class="subsection-title">Wood Carving: From Sacred to Secular</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🌾</div><h3>Bulul Carvings (Ifugao)</h3></div>
+      <p>Sacred rice deity figures carved from narra or ipil hardwood, believed to protect harvests and ensure agricultural abundance. These anthropomorphic statues undergo rituals before use, often passed down through generations of rice-farming families.</p>
+      <div class="tags"><span class="tag">Ifugao Province</span><span class="tag">2,000+ Years Old</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⛪</div><h3>Paete: Carving Capital</h3></div>
+      <p>Proclaimed the "Carving Capital of the Philippines" (2005), Paete Laguna has produced religious icons, santos, and decorative pieces since Spanish colonial times. Master artisan Mariano Madriñan's Mater Dolorosa won international recognition in 1882.</p>
+      <div class="tags"><span class="tag">Laguna Province</span><span class="tag">400+ Year Tradition</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🐓</div><h3>Okir &amp; Sarimanok (Maranao)</h3></div>
+      <p>Intricate geometric and floral patterns (okir) adorn houses, boats, and artifacts, while the Sarimanok—mythical rooster holding a fish—symbolizes good fortune and royal status. These designs reflect Islamic artistic principles and pre-colonial animist beliefs.</p>
+      <div class="tags"><span class="tag">Lanao del Sur</span><span class="tag">Islamic Art</span></div>
+    </div>
+  </div>
+
+  <!-- POTTERY -->
+  <div class="gap reveal">
+    <div class="subsection-label">Ceramics</div>
+    <h3 class="subsection-title">Pottery and Ceramics: Earth as Canvas</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🔥</div><h3>Vigan Burnay</h3></div>
+      <p>High-fired stoneware jars introduced by Chinese migrants in the late 18th century, used for fermenting bagoong and basi. Fired in traditional dragon kilns at 1,200°C for 24 hours, these durable vessels feature dark gray surfaces from local clay mixed with sand.</p>
+      <div class="tags"><span class="tag">Ilocos Sur</span><span class="tag">National Folk Art (1990)</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">💧</div><h3>Kalinga Banga</h3></div>
+      <p>Traditional water pots coil-built by women using local clays, featuring incised geometric patterns and black slip (lebu) coating for waterproofing. These functional vessels represent women's roles in community life and are often exchanged for rice in barter systems.</p>
+      <div class="tags"><span class="tag">Kalinga Province</span><span class="tag">Women's Craft</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🍲</div><h3>Bohol Earthenware</h3></div>
+      <p>Low-fired cooking pots (palayok), charcoal stoves (ulingan), and storage vessels created using paddle-and-anvil techniques. These everyday items connect contemporary Boholano life to prehistoric Kalanay pottery traditions.</p>
+      <div class="tags"><span class="tag">Bohol Province</span><span class="tag">Utilitarian Art</span></div>
+    </div>
+  </div>
+
+  <!-- TATTOOING -->
+  <div class="gap reveal">
+    <div class="subsection-label">Body Art</div>
+    <h3 class="subsection-title">Body as Art: Traditional Tattooing</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🤙</div><h3>Batok: The Kalinga Tradition</h3></div>
+      <p>The term "batok" (meaning "to hit" or "to strike") refers to hand-tapped tattoos using a thorn (gisi) attached to a carabao horn handle, tapped with a wooden stick (pat-ik) at 90–120 taps per minute. Black ink comes from soot mixed with water or plant dye.</p>
+      <div class="tags"><span class="tag">Kalinga Province</span><span class="tag">Hand-Tapping</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⚔️</div><h3>Symbols of Status and Bravery</h3></div>
+      <p>Traditional tattoos marked headhunting victories, social rank, and life milestones. Each design—from centipede patterns to geometric shapes—carried specific meanings and protective powers. Only those who had demonstrated exceptional bravery earned full body tattoos.</p>
+      <div class="tags"><span class="tag">Status Markers</span><span class="tag">Ritual Significance</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⭐</div><h3>Apo Whang-ud: Living Legend</h3></div>
+      <p>At 106 years old, Apo Whang-ud (Maria Oggay) is the last traditional mambatok (tattoo artist) of Kalinga. Featured on Vogue Philippines (April 2023) as the magazine's oldest cover model, she has sparked global interest in batok and trained grandnieces to continue the tradition.</p>
+      <div class="tags"><span class="tag">Buscalan Village</span><span class="tag">Global Icon</span></div>
+    </div>
+  </div>
+  <div class="info-box reveal gap">
+    <h4>Regional Variations</h4>
+    <ul class="checklist">
+      <li>Batek — General term for tattoos across Luzon</li>
+      <li>Patik — Term used in Visayas and Mindanao</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 03 REGIONAL -->
+<section class="section" id="regional">
+  <div class="section-header reveal">
+    <div class="section-label">Chapter Three</div>
+    <span class="section-num">03</span>
+    <h2>Regional Art Forms<br>Across the Archipelago</h2>
+    <div class="section-rule"></div>
+    <p class="section-subtitle">Diversity in Unity: Arts of Luzon, Visayas, and Mindanao</p>
+  </div>
+
+  <!-- LUZON -->
+  <div class="reveal">
+    <div class="subsection-label">Northern Philippines</div>
+    <h3 class="subsection-title">Luzon: Northern Traditions and Highland Arts</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🏔</div><h3>Cordillera Highlands</h3></div>
+      <p>The rice terraces of Ifugao (UNESCO World Heritage Site, 2,000+ years old) represent engineering mastery and spiritual connection to land. Bulul carvings, woven textiles, and ritual arts preserve animist traditions despite colonial influences.</p>
+      <div class="tags"><span class="tag">Ifugao</span><span class="tag">Benguet</span><span class="tag">Mountain Province</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">👕</div><h3>Ilocos Weaving &amp; Pottery</h3></div>
+      <p>Inabel textiles with binakol patterns and Vigan's burnay pottery showcase Ilocano resilience and craftsmanship. These traditions have survived centuries through adaptation while maintaining distinct regional identity.</p>
+      <div class="tags"><span class="tag">Ilocos Norte &amp; Sur</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⭐</div><h3>Pampanga Lanterns (Parol)</h3></div>
+      <p>Giant Christmas lanterns (parol) from San Fernando, Pampanga, feature intricate capiz shell designs and electric lights. The annual Ligligan Parul competition showcases barangay creativity and communal artistry.</p>
+      <div class="tags"><span class="tag">San Fernando, Pampanga</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🌿</div><h3>Bicol Abacá Crafts</h3></div>
+      <p>Bicol region produces world-class abacá (Manila hemp) products including mats, bags, and textiles. The fiber's strength and natural sheen make it ideal for both functional and decorative items exported globally.</p>
+      <div class="tags"><span class="tag">Albay</span><span class="tag">Camarines Sur</span></div>
+    </div>
+  </div>
+
+  <!-- VISAYAS -->
+  <div class="gap reveal">
+    <div class="subsection-label">Central Philippines</div>
+    <h3 class="subsection-title">Visayas: Festival Arts and Island Crafts</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎭</div><h3>Festival Arts: Sinulog, Ati-Atihan, MassKara</h3></div>
+      <p>Visayan festivals showcase elaborate costumes, body paint, and street dancing. Ati-Atihan (Aklan) honors Santo Niño with tribal-inspired black body paint. Sinulog (Cebu) features colorful queen costumes and choreographed dances. MassKara (Bacolod) emerged from crisis, using smiling masks to express resilience.</p>
+      <div class="tags"><span class="tag">Aklan</span><span class="tag">Cebu</span><span class="tag">Negros Occidental</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🏺</div><h3>Cebu &amp; Bohol Pottery</h3></div>
+      <p>Low-fired earthenware traditions persist in Cebu and Bohol, producing cooking pots, water vessels, and decorative items. Community-based production using local clays and open-fire techniques connects contemporary life to prehistoric Kalanay pottery complex.</p>
+      <div class="tags"><span class="tag">Cebu &amp; Bohol Provinces</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⊞</div><h3>Banig Weaving (Samar &amp; Basey)</h3></div>
+      <p>Intricate sleeping mats woven from tikog grass feature geometric patterns and vibrant colors. Basey, Samar is renowned for producing the finest banig in the Philippines, with weavers creating complex designs that can take weeks to complete.</p>
+      <div class="tags"><span class="tag">Samar &amp; Leyte</span></div>
+    </div>
+  </div>
+  <div class="pullquote reveal gap">
+    <p>Island geography influenced material use and artistic styles, creating distinct regional expressions unified by shared Austronesian heritage.</p>
+  </div>
+
+  <!-- MINDANAO -->
+  <div class="gap reveal">
+    <div class="subsection-label">Southern Philippines</div>
+    <h3 class="subsection-title">Mindanao: Islamic Arts and Indigenous Expressions</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🏠</div><h3>Maranao Okir &amp; Sarimanok</h3></div>
+      <p>Okir refers to intricate geometric and floral carvings adorning torogan houses, boats, and artifacts. The Sarimanok—mythical rooster with fish in beak—symbolizes royalty and good fortune. These designs reflect Islamic artistic principles prohibiting figurative representation while celebrating nature.</p>
+      <div class="tags"><span class="tag">Lanao del Sur</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎵</div><h3>Brass Casting: Kulintang &amp; Gandingan</h3></div>
+      <p>Maguindanao and Maranao brass casters create the kulintang (horizontal gong row), gandingan (hanging gongs), and agung (large gongs) used in traditional ensembles. These musical instruments are both functional and decorative, featuring intricate okir patterns.</p>
+      <div class="tags"><span class="tag">Maguindanao &amp; Lanao</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🌙</div><h3>T'boli T'nalak Weaving</h3></div>
+      <p>The sacred dreamweaving tradition of the T'boli people uses abacá fiber and natural dyes to create textiles with patterns received from spirits. National Living Treasure Lang Dulay preserved this art until her passing in 2015.</p>
+      <div class="tags"><span class="tag">South Cotabato</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⊞</div><h3>Yakan Weaving (Basilan)</h3></div>
+      <p>Yakan textiles feature bold geometric patterns in vibrant colors (red, yellow, black, white) created using backstrap looms. These designs are so distinctive that they can be recognized as Yakan from a distance, representing cultural identity and pride.</p>
+      <div class="tags"><span class="tag">Basilan Province</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⛵</div><h3>Sama-Badjao Boat Carving</h3></div>
+      <p>The sea nomads of Sulu create intricately carved vintas (boats) with distinctive rainbow-colored sails. These vessels are not just transportation but floating homes and expressions of maritime identity, featuring elaborate prow and stern decorations.</p>
+      <div class="tags"><span class="tag">Sulu Archipelago</span></div>
+    </div>
+  </div>
+  <div class="pullquote reveal gap">
+    <p>Cultural Mosaic: Mindanao's arts reflect the island's position as a historical crossroads of Malay, Islamic, Chinese, and indigenous influences.</p>
+  </div>
+</section>
+
+<!-- 04 EVOLUTION -->
+<section class="section" id="evolution">
+  <div class="section-header reveal">
+    <div class="section-label">Chapter Four</div>
+    <span class="section-num">04</span>
+    <h2>The Evolution to<br>Contemporary Expression</h2>
+    <div class="section-rule"></div>
+    <p class="section-subtitle">From Tradition to Innovation: Philippine Modern Art Movements</p>
+  </div>
+
+  <div class="reveal">
+    <div class="subsection-label">Modernism</div>
+    <h3 class="subsection-title">Birth of Philippine Modernism</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⚙️</div><h3>Fernando Amorsolo (1892–1972)</h3></div>
+      <p>The first National Artist of the Philippines (1972), Amorsolo developed a distinctive backlighting technique that made his rural landscapes and figures glow with golden Philippine sunlight. His idealized depictions of farmers, women in traditional dress, and pastoral scenes defined Filipino visual identity for generations.</p>
+      <div class="tags"><span class="tag">First National Artist</span><span class="tag">10+ Paintings/Month</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎨</div><h3>Victorio Edades &amp; The Thirteen Moderns</h3></div>
+      <p>Edades' 1928 work "The Builders" introduced modernism to the Philippines, challenging academic realism. The Thirteen Moderns (including Botong Francisco, Galo Ocampo, and Diosdado Lorenzo) broke from traditional styles, exploring distortion, bold colors, and social themes.</p>
+      <div class="tags"><span class="tag">1928 Revolution</span><span class="tag">Modern Art Movement</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎓</div><h3>UP School of Fine Arts (1916)</h3></div>
+      <p>The University of the Philippines established formal art education, training generations of Filipino artists in both Western techniques and national identity. Scholarships abroad exposed artists to Impressionism, Cubism, and emerging modern movements.</p>
+      <div class="tags"><span class="tag">Academic Foundation</span></div>
+    </div>
+  </div>
+
+  <div class="gap reveal">
+    <div class="subsection-label">Abstraction</div>
+    <h3 class="subsection-title">Abstract Expressionism and Beyond</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">✏️</div><h3>Jose Joya (1931–1995)</h3></div>
+      <p>Pioneer of Abstract Expressionism in the Philippines and first Filipino artist to exhibit at the Venice Biennale (1964). Joya's dynamic paintings feature bold colors, gestural brushwork, and layered compositions inspired by Philippine landscapes and seascapes. His work "Granadean Arabesque" (1958) exemplifies his mastery of large-scale abstraction.</p>
+      <div class="tags"><span class="tag">Venice Biennale 1964</span><span class="tag">National Artist 2003</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎵</div><h3>H.R. Ocampo (1911–1978)</h3></div>
+      <p>Known for "visual music" paintings that translate rhythmic patterns into color and form. Ocampo's mutants series explored biomorphic shapes inspired by Philippine flora and fauna, creating a unique abstract vocabulary rooted in tropical imagery.</p>
+      <div class="tags"><span class="tag">Visual Music</span><span class="tag">Biomorphic Abstraction</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⬡</div><h3>Ang Kiukok (1931–2005)</h3></div>
+      <p>Chinese-Filipino artist who blended Cubist geometry with expressionist intensity. His crucifixion series and mother-and-child paintings used angular, distorted forms to convey spiritual and emotional depth. Works command high prices at Sotheby's and Christie's auctions.</p>
+      <div class="tags"><span class="tag">Cubist Expressionism</span><span class="tag">National Artist 2001</span></div>
+    </div>
+  </div>
+
+  <div class="gap reveal">
+    <div class="subsection-label">Political Art</div>
+    <h3 class="subsection-title">Art as Protest: Social Realism and Political Expression</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">✊</div><h3>Martial Law Era (1972–1986)</h3></div>
+      <p>Ferdinand Marcos' declaration of martial law sparked an artistic response addressing human rights abuses, political oppression, and social inequality. Artists formed collectives like KASIBULAN and used their work as tools for resistance and consciousness-raising.</p>
+      <div class="tags"><span class="tag">14 Years of Dictatorship</span><span class="tag">Art as Resistance</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">👥</div><h3>Social Realism Movement</h3></div>
+      <p>Artists like Pablo Baens Santos, Orlando Castillo, and Antipas Delotavo depicted the struggles of workers, farmers, and urban poor. Their figurative works combined technical mastery with political messaging, making art accessible to marginalized communities.</p>
+      <div class="tags"><span class="tag">People's Art</span><span class="tag">Political Engagement</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🖼</div><h3>Protest Art Forms</h3></div>
+      <p>From effigy burning during rallies to murals in urban communities, protest art took diverse forms. The iconic "Dambana ng Paghilom" (Shrine of Healing) and EDSA Revolution imagery demonstrated art's power in mobilizing mass movements.</p>
+      <div class="tags"><span class="tag">Street Art</span><span class="tag">Effigy Making</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 MASTERS -->
+<section class="section" id="masters">
+  <div class="section-header reveal">
+    <div class="section-label">Chapter Five</div>
+    <span class="section-num">05</span>
+    <h2>Filipino Masters<br>and National Artists</h2>
+    <div class="section-rule"></div>
+    <p class="section-subtitle">Legends Who Shaped Philippine Art History</p>
+  </div>
+
+  <div class="reveal">
+    <div class="subsection-label">Order of National Artists</div>
+    <h3 class="subsection-title">National Artists for Visual Arts</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="artist-list reveal">
+    <div class="artist-card">
+      <h3>Fernando Amorsolo (1972)</h3>
+      <p>First National Artist. Romanticized rural landscapes, backlighting technique, idealized Filipino scenes.</p>
+      <div class="genre-badge">Painting</div>
+    </div>
+    <div class="artist-card">
+      <h3>Carlos "Botong" Francisco (1973)</h3>
+      <p>Muralist depicting Philippine history and folklore. Famous for "Filipino Struggles Through History" at Manila City Hall.</p>
+      <div class="genre-badge">Historical Murals</div>
+    </div>
+    <div class="artist-card">
+      <h3>Guillermo Tolentino (1973)</h3>
+      <p>Master sculptor of the Bonifacio Monument and UP Oblation. Classical style with Filipino themes.</p>
+      <div class="genre-badge">Sculpture</div>
+    </div>
+    <div class="artist-card">
+      <h3>Napoleon Abueva (1976)</h3>
+      <p>Father of Modern Philippine Sculpture. Abstract and figurative works in wood, stone, and metal.</p>
+      <div class="genre-badge">Modern Sculpture</div>
+    </div>
+    <div class="artist-card">
+      <h3>Vicente Manansala (1981)</h3>
+      <p>Transparent Cubism combining multiple perspectives with Filipino subjects. Madonna series and barrio scenes.</p>
+      <div class="genre-badge">Cubism</div>
+    </div>
+    <div class="artist-card">
+      <h3>Cesar Legaspi (1990)</h3>
+      <p>Social realist depicting urban poor and workers. Distorted figures, bold colors, political themes.</p>
+      <div class="genre-badge">Social Realism</div>
+    </div>
+    <div class="artist-card">
+      <h3>Arturo Luz (1997)</h3>
+      <p>Minimalist geometric abstractions, clean lines, and subtle colors. Explored pure form and space.</p>
+      <div class="genre-badge">Minimalism</div>
+    </div>
+    <div class="artist-card">
+      <h3>Jose Joya (2003)</h3>
+      <p>Abstract expressionist, first Filipino at Venice Biennale (1964). Bold colors, gestural brushwork.</p>
+      <div class="genre-badge">Abstract Expressionism</div>
+    </div>
+    <div class="artist-card">
+      <h3>Ang Kiukok (2001)</h3>
+      <p>Cubist-expressionist, crucifixion series, mother-and-child paintings. Angular, emotionally intense works.</p>
+      <div class="genre-badge">Expressionism</div>
+    </div>
+    <div class="artist-card">
+      <h3>Benedicto "BenCab" Cabrera (2006)</h3>
+      <p>Figurative paintings of Cordillera life, Sabel series. BenCab Museum in Baguio promotes Philippine art.</p>
+      <div class="genre-badge">Figurative Art</div>
+    </div>
+    <div class="artist-card">
+      <h3>Abdulmari Asia Imao (2006)</h3>
+      <p>First Muslim National Artist. Brass sculptures, okir designs, sarimanok motifs. Promoted Islamic art.</p>
+      <div class="genre-badge">Islamic Sculpture</div>
+    </div>
+  </div>
+  <div class="info-box reveal gap">
+    <h4>Other Notable Artists</h4>
+    <p style="font-size:0.88rem; color:var(--text-secondary);">Juan Luna (Spoliarium), Felix Resurreccion Hidalgo (Christian Virgins), Isabelo Tampinco (Art Nouveau), and many more who shaped Philippine art history.</p>
+  </div>
+
+  <!-- CONTEMPORARY MASTERS -->
+  <div class="gap reveal">
+    <div class="subsection-label">Global Recognition</div>
+    <h3 class="subsection-title">Contemporary Masters on the Global Stage</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🌐</div><h3>Pacita Abad (1946–2004)</h3></div>
+      <p>Internationally celebrated for trapunto paintings—stuffed, quilted canvases with vibrant colors and mixed media. Major retrospective at Walker Art Center (2023), traveling to SFMOMA, MoMA PS1, and Art Gallery of Ontario (2024–2025). Created 5,000+ works including the Alkaff Bridge in Singapore.</p>
+      <div class="tags"><span class="tag">Trapunto Technique</span><span class="tag">Global Retrospective</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🟫</div><h3>Maria Taniguchi (b. 1981)</h3></div>
+      <p>Represented the Philippines at Venice Biennale 2024 with her signature brick paintings—large-scale minimalist works exploring repetition and materiality. Based in Manila, exhibited at Silverlens New York, Carlier | Gebauer Berlin, and Taka Ishii Gallery Tokyo.</p>
+      <div class="tags"><span class="tag">Venice Biennale 2024</span><span class="tag">Minimalist Abstraction</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">📚</div><h3>Patricia Perez Eustaquio</h3></div>
+      <p>Known for mixed-media works combining traditional crafts (weaving, embroidery) with contemporary materials. Exhibited at Palais de Tokyo Paris, Singapore Biennale, and Silverlens Galleries. Explores themes of memory, identity, and cultural heritage.</p>
+      <div class="tags"><span class="tag">Mixed Media</span><span class="tag">Cultural Identity</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 CONTEMPORARY -->
+<section class="section" id="contemporary">
+  <div class="section-header reveal">
+    <div class="section-label">Chapter Six</div>
+    <span class="section-num">06</span>
+    <h2>Contemporary Art<br>in the Global Stage</h2>
+    <div class="section-rule"></div>
+    <p class="section-subtitle">Filipino Art Today: Innovation and Recognition</p>
+  </div>
+
+  <div class="reveal">
+    <div class="subsection-label">Emerging Artists</div>
+    <h3 class="subsection-title">Rising Stars: Emerging Filipino Artists</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🌿</div><h3>Catalina Africa</h3></div>
+      <p>CCP 13 Artist Awardee (2024) whose nature-inspired paintings explore the relationship between self, community, and landscape. Based in Baler, her work treats nature as collaborator rather than subject. Featured at Art Basel Hong Kong 2025 and Silverlens New York.</p>
+      <div class="tags"><span class="tag">CCP 13 Artist Awardee</span><span class="tag">Art Basel 2025</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎨</div><h3>Pow Martinez</h3></div>
+      <p>Expressionistic painter known for bold colors and demonic, mutant-like characters addressing society's overconsumption. Ateneo Art Award recipient (2010), exhibited at Palais de Tokyo Paris, Art Basel Hong Kong, and Frieze Los Angeles 2025.</p>
+      <div class="tags"><span class="tag">Ateneo Art Award 2010</span><span class="tag">Frieze LA 2025</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">📚</div><h3>Kawayan de Guia</h3></div>
+      <p>Mixed-media artist from Baguio combining indigenous materials with contemporary concepts. Son of National Artist BenCab, he explores Cordillera culture, colonial history, and urbanization through assemblage and installation.</p>
+      <div class="tags"><span class="tag">Mixed Media</span><span class="tag">Cordillera Themes</span></div>
+    </div>
+  </div>
+  <div class="pullquote reveal gap">
+    <p>A new generation of artists blends traditional Filipino themes with contemporary techniques and global perspectives.</p>
+  </div>
+
+  <div class="gap reveal">
+    <div class="subsection-label">Digital &amp; New Media</div>
+    <h3 class="subsection-title">New Media and Digital Frontiers</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-grid-2 reveal">
+    <div class="grid-card">
+      <h4>💻 Digital Illustration</h4>
+      <p>Filipino digital artists have gained massive global followings through platforms like Instagram, ArtStation, and Behance. Using tools like Procreate, Photoshop, and AI-assisted software, they create concept art, character designs, and illustrations for international gaming and entertainment industries.</p>
+      <div class="tags" style="margin-top:1rem"><span class="tag">Global Reach</span><span class="tag">Entertainment Industry</span></div>
+    </div>
+    <div class="grid-card">
+      <h4>📹 Video &amp; New Media</h4>
+      <p>Artists explore video art, projections, and interactive installations. Institutions like MCAD Manila support experimental media art that pushes boundaries of traditional forms.</p>
+      <div class="tags" style="margin-top:1rem"><span class="tag">Installation</span><span class="tag">Interactive</span></div>
+    </div>
+    <div class="grid-card">
+      <h4>📷 Filipino Photography</h4>
+      <p>Documentary and fine art photographers have gained international recognition. Xyza Cruz Bacani (National Geographic, Magnum Foundation), Hannah Reyes Morales (World Press Photo), and Jay Jallorina capture Filipino life with global impact.</p>
+      <div class="tags" style="margin-top:1rem"><span class="tag">Documentary</span><span class="tag">Fine Art</span></div>
+    </div>
+    <div class="grid-card">
+      <h4>🎨 Street Art Movement</h4>
+      <p>Metro Manila's street art scene flourishes in Paco, Taguig, Makati, and BGC. Murals address social issues, celebrate Filipino identity, and transform urban spaces into open-air galleries.</p>
+      <div class="tags" style="margin-top:1rem"><span class="tag">Urban Art</span><span class="tag">Social Commentary</span></div>
+    </div>
+  </div>
+
+  <div class="gap reveal">
+    <div class="subsection-label">Institutions</div>
+    <h3 class="subsection-title">Museums, Galleries, and Art Institutions</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🏛</div><h3>National Museum of Fine Arts</h3></div>
+      <p>Housed in the former Legislative Building (1921), this neoclassical structure features 29 galleries showcasing 19th-century Filipino masters (Juan Luna, Felix Resurreccion Hidalgo), National Artists, and modern painters. The Spoliarium hall and Botong Francisco's historical murals are highlights.</p>
+      <div class="tags"><span class="tag">29 Galleries</span><span class="tag">Free Admission</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⊞</div><h3>Cultural Center of the Philippines</h3></div>
+      <p>CCP remains the premier institution for Philippine arts, hosting exhibitions, performances, and the annual National Arts Month celebrations. The Bulwagang Roberto Chabet serves as the main exhibition hall while the main building undergoes renovation until 2026.</p>
+      <div class="tags"><span class="tag">National Arts Month</span><span class="tag">Performing Arts</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎨</div><h3>BenCab Museum &amp; Private Galleries</h3></div>
+      <p>BenCab Museum (Baguio) showcases National Artist Benedicto Cabrera's works alongside Cordillera art and contemporary pieces. Commercial galleries like Silverlens, West Gallery, 1335 Mabini, and Galleria Duemila promote Filipino artists locally and internationally.</p>
+      <div class="tags"><span class="tag">Baguio</span><span class="tag">Contemporary Focus</span></div>
+    </div>
+  </div>
+  <div class="info-box reveal gap">
+    <h4>Other Key Institutions</h4>
+    <ul class="checklist">
+      <li>Ayala Museum (Makati)</li>
+      <li>Vargas Museum (UP Diliman)</li>
+      <li>Ateneo Art Gallery (QC)</li>
+      <li>MCAD Manila (De La Salle)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 07 SOCIAL VOICE -->
+<section class="section" id="social">
+  <div class="section-header reveal">
+    <div class="section-label">Chapter Seven</div>
+    <span class="section-num">07</span>
+    <h2>Art as<br>Social Voice</h2>
+    <div class="section-rule"></div>
+    <p class="section-subtitle">Creativity for Change: Art as a Tool for Social Transformation</p>
+  </div>
+
+  <div class="reveal">
+    <div class="subsection-label">Social Issues</div>
+    <h3 class="subsection-title">Contemporary Art and Social Issues</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🚩</div><h3>Poverty and Inequality</h3></div>
+      <p>Artists like Elmer Borlongan, Manny Garibay, and Mark Justiniani create powerful works depicting urban poor communities, labor struggles, and economic disparities. Their figurative paintings bring visibility to marginalized sectors and challenge viewers to confront social realities.</p>
+      <div class="tags"><span class="tag">Social Realism</span><span class="tag">Economic Justice</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🌿</div><h3>Environmental Degradation</h3></div>
+      <p>Climate change, deforestation, and mining impacts are addressed through installations, photography, and community-based projects. Artists work with indigenous communities to document environmental destruction and advocate for ecological justice.</p>
+      <div class="tags"><span class="tag">Climate Art</span><span class="tag">Ecological Justice</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">👥</div><h3>Indigenous Rights</h3></div>
+      <p>Artists collaborate with lumad and indigenous communities to document struggles for ancestral domain, cultural preservation, and self-determination. Art becomes a tool for amplifying voices often excluded from mainstream discourse.</p>
+      <div class="tags"><span class="tag">Ancestral Domain</span><span class="tag">Cultural Preservation</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">⚧</div><h3>Gender and Identity</h3></div>
+      <p>LGBTQ+ artists and feminists explore gender identity, sexuality, and body politics. Works challenge patriarchal norms, celebrate queer identities, and address issues of discrimination and violence against marginalized genders.</p>
+      <div class="tags"><span class="tag">LGBTQ+ Rights</span><span class="tag">Feminist Art</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">📋</div><h3>Historical Revisionism</h3></div>
+      <p>Artists counter attempts to rewrite martial law history through works that document human rights abuses, memorialize victims, and educate younger generations about the dictatorship era. Art becomes an act of historical resistance.</p>
+      <div class="tags"><span class="tag">Memory Work</span><span class="tag">Education</span></div>
+    </div>
+  </div>
+
+  <div class="gap reveal">
+    <div class="subsection-label">Cultural Resistance</div>
+    <h3 class="subsection-title">Revolutionary Art and Cultural Resistance</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">✊</div><h3>SAKA: Artists for Agrarian Reform</h3></div>
+      <p>Sama-samang Artista para sa Kilusang Agraryo (SAKA) is a cultural organization of artists supporting peasant struggles. Members engage in bungkalan (collective farming), create protest art, and use their platforms to advocate for land reform and farmers' rights.</p>
+      <div class="tags"><span class="tag">Land Reform</span><span class="tag">Peasant Rights</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎭</div><h3>Tambisan sa Sining</h3></div>
+      <p>A cultural organization using theater, music, and visual arts for social change. Founded during martial law, Tambisan continues to organize cultural workers, create protest performances, and mobilize communities around social justice issues.</p>
+      <div class="tags"><span class="tag">Cultural Work</span><span class="tag">Since 1970s</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">👥</div><h3>Community-Based Art Projects</h3></div>
+      <p>Artists like Enzo Camacho and Ami Lien engage in long-term collaborations with farming communities, creating works that emerge from shared struggle. Their installation "Compostlight" (2023) was inspired by militant disco lights spotted during bungkalan activities.</p>
+      <div class="tags"><span class="tag">Participatory</span><span class="tag">Community Collaboration</span></div>
+    </div>
+  </div>
+  <div class="pullquote reveal gap">
+    <p>Socially-Engaged Art: Contemporary Filipino artists increasingly work directly with communities to create meaningful change through collaborative, participatory practices.</p>
+  </div>
+</section>
+
+<!-- 08 PRESERVING -->
+<section class="section" id="preserving">
+  <div class="section-header reveal">
+    <div class="section-label">Chapter Eight</div>
+    <span class="section-num">08</span>
+    <h2>Preserving and Celebrating<br>Philippine Arts</h2>
+    <div class="section-rule"></div>
+    <p class="section-subtitle">Ensuring Our Heritage Endures for Future Generations</p>
+  </div>
+
+  <div class="reveal">
+    <div class="subsection-label">Living Heritage</div>
+    <h3 class="subsection-title">Living Traditions: Transmission and Revival</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🏆</div><h3>Gawad sa Manlilikha ng Bayan</h3></div>
+      <p>The National Living Treasures Award (1992) recognizes traditional artists who have preserved indigenous crafts. Awardees include Lang Dulay (T'nalak weaving), Fidel Go (Burnay pottery), and Apo Whang-ud (Batok tattooing), ensuring their knowledge is documented and transmitted to younger generations.</p>
+      <div class="tags"><span class="tag">National Recognition</span><span class="tag">Living Treasures</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">📍</div><h3>Cultural Mapping Initiatives</h3></div>
+      <p>Government agencies (NCCA) and academic institutions conduct cultural mapping to document traditional arts, identify master practitioners, and create databases of endangered crafts. This systematic approach ensures no tradition is lost to time.</p>
+      <div class="tags"><span class="tag">Documentation</span><span class="tag">NCCA Programs</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🤝</div><h3>Apprenticeship Programs</h3></div>
+      <p>Master artisans train younger generations through traditional apprenticeship models. Programs like the School of Living Traditions (SLT) immerse students in craft-making, ensuring techniques, patterns, and cultural meanings are passed down authentically.</p>
+      <div class="tags"><span class="tag">Hands-On Learning</span><span class="tag">Intergenerational</span></div>
+    </div>
+  </div>
+  <div class="info-box reveal gap">
+    <h4>Revival Success Stories</h4>
+    <ul class="checklist">
+      <li>T'nalak weaving youth programs</li>
+      <li>Batok tattoo cultural tourism</li>
+      <li>Weaving cooperatives across the archipelago</li>
+    </ul>
+  </div>
+
+  <div class="gap reveal">
+    <div class="subsection-label">National Celebrations</div>
+    <h3 class="subsection-title">National Arts Month and Cultural Celebrations</h3>
+  </div>
+  <div class="gap-sm"></div>
+  <div class="card-stack reveal">
+    <div class="card">
+      <div class="card-head"><div class="card-icon">📅</div><h3>National Arts Month (February)</h3></div>
+      <p>Established by Presidential Proclamation No. 683 (1991), NAM celebrates all seven art forms across the Philippines. The 2026 theme "Ani ng Sining: Katotohanan at Giting" (Harvest of Arts: Truth and Courage) highlights art's power to speak truth and inspire courage.</p>
+      <div class="tags"><span class="tag">February Celebration</span><span class="tag">Nationwide Events</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">💡</div><h3>NAM 2026 Grand Launch</h3></div>
+      <p>The opening ceremony at Luneta Park (February 1) features the ceremonial passing of the lampara (oil lamp), symbolizing light, truth, and courage. The program includes performances by UST Salinggawi, Philippine Ballet Theater, and regional cultural groups.</p>
+      <div class="tags"><span class="tag">Luneta Park</span><span class="tag">Parada ng mga Sining</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-icon">🎭</div><h3>Regional Festivals</h3></div>
+      <p>Throughout the year, festivals celebrate local arts: Sinulog (Cebu), Ati-Atihan (Aklan), MassKara (Bacolod), Panagbenga (Baguio), and Kadayawan (Davao). These events showcase traditional and contemporary arts while boosting cultural tourism.</p>
+      <div class="tags"><span class="tag">Cultural Tourism</span><span class="tag">Economic Impact</span></div>
+    </div>
+  </div>
+  <div class="card-grid-2 reveal gap">
+    <div class="grid-card">
+      <h4>Seven Art Forms Celebrated</h4>
+      <ul class="checklist">
+        <li>Architecture</li>
+        <li>Cinema</li>
+        <li>Dance</li>
+        <li>Theater</li>
+        <li>Literature</li>
+        <li>Music</li>
+        <li>Visual Arts</li>
+      </ul>
+    </div>
+    <div class="grid-card">
+      <h4>What These Celebrations Do</h4>
+      <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.7;">These celebrations foster national pride, support local artists, and ensure that Philippine arts remain vibrant and relevant across generations and communities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-icon">🎨</div>
+  <h2>The Filipino Artistic Spirit</h2>
+  <div class="closing-tag">Ever Evolving, Forever Enduring</div>
+  <p>From the sacred weavings of the T'boli dreamweavers to the digital canvases of contemporary artists, Philippine visual arts embody a living tradition that honors the past while embracing the future.</p>
+  <p>This artistic journey reflects the resilience, creativity, and soul of the Filipino people—a testament to a culture that continues to inspire the world.</p>
+  <div class="closing-stats">
+    <div>
+      <span class="closing-stat-num">4,000+</span>
+      <div class="closing-stat-label">Years of Heritage</div>
+    </div>
+    <div>
+      <span class="closing-stat-num">175+</span>
+      <div class="closing-stat-label">Ethnic Traditions</div>
+    </div>
+    <div>
+      <span class="closing-stat-num">∞</span>
+      <div class="closing-stat-label">Possibilities</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">🎨 PILIPINAS — Arts Appreciation</div>
+  <div class="footer-note">Philippine Visual Arts: A Journey Through Tradition and Modernity</div>
+</footer>
+
+<script>
+  // HAMBURGER
+  function toggleNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // CLOSE MOBILE NAV ON OUTSIDE CLICK
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mobileNav');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !e.target.closest('.hamburger')) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
